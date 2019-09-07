@@ -1,0 +1,54 @@
+{%extends 'blog/base.html'%}
+{% load crispy_forms_tags%}
+{%load static%}
+{%block content%}
+<style>
+    body{
+        background-image: url("{%static "users/login_background2.jpg"%}");
+
+    }
+   .Welcome_title{
+     color:whitesmoke;
+      position: fixed;
+       left:35%;
+       font-size:35pt ;
+
+       text-align: center;
+
+
+   }
+    .content-section{
+        width:350px;
+        position:fixed;
+        max-height: 500px;
+        top:20%;
+        left:30%;
+        right: 50%;
+        border: 10px white;
+        border-radius: 10px;
+        background-color:transparent ;
+        color: white;
+
+
+    }
+
+</style>
+
+<h1 class="Welcome_title"><b>Welcome</b></h1>
+
+<div  class=content-section>
+    <form method="POST">
+        {%csrf_token%}
+        <fieldset class="form-group" >
+            <legend class="border-bottom mb-4">Log in</legend>
+            {{form|crispy}}
+
+        </fieldset>
+    <button class="btn btn-info" type="submit">Log in</button>
+
+    </form>
+    <div class="boder-top pt-3">
+        <small >Need an account? <a class="ml-2" href="{%url 'user_register'%}">sign up</a></small>
+    </div>
+</div>
+{%endblock%}
